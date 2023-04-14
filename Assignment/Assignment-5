@@ -1,0 +1,2 @@
+Vincy an automation tester wants to know that how many tabs are open by webdriver while testing an application this?
+driver.window_handles
