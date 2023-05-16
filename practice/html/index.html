@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <p id="j">getting</p>
+
+        <ul>
+            <li class="tech">Python</li>
+            <li class="tech">JavaScript</li>
+            <li class="tech">React</li>
+        </ul>
+
+        <h1>hello</h1>
+        <h1 class="class">hi</h1>
+        <h1 id="cls">hola</h1>
+
+        <h2>jeving</h2>
+        <h2>jeving is software engineer</h2>
+        <script>
+            //ID
+            var j1 = document.getElementById("j");
+            console.log(j.innerText);
+
+            // Class
+            var c = document.getElementsByClassName("tech");
+            console.log(c[1].innerText);
+            c[1].innerText="Node.Js"
+            console.log(c[1].innerText);
+
+            //Tag
+            var t = document.getElementsByTagName("h1");
+            console.log(t);
+            t[2].innerText ="hi";
+
+            let h2s = document.getElementsByTagName("h2");
+            console.log(h2s)
+            h2s[1].style.color = "red";
+
+        </script>
+    </body>
+</html>

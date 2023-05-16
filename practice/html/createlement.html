@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM</title>
+</head>
+<body>
+    
+    <ul>
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+
+    <script>
+        let h1s = document.createElement("h1");
+        h1s.className="pw";
+        h1s.style.fontSize="30px";
+        h1s.textContent="This Is Fullstack Development Class";
+        console.log(h1s);
+        document.body.append(h1s);
+
+        // removing
+        let ul =document.querySelector("ul");
+        console.log(ul);
+        let lis =document.querySelectorAll("li");
+        console.log(lis);
+
+        for(li of lis){
+            ul.removeChild(li);
+        }
+
+
+
+
+    </script>
+</body>
+</html>
