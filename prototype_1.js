@@ -52,7 +52,7 @@ console.log(TAAssistance);
 console.log(TAAssistance.isAvailable);
 
 // console.log(TAAssistance);
-console.log(TeachingSupport);
+// console.log(TeachingSupport);
 
 // // // String.prototype.trim
 String.prototype.trimlength = function () {
