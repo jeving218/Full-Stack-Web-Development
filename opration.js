@@ -62,3 +62,6 @@ console.log("list_2:", list_2);
 const any_name = "Jeving";
 const any_name_1 = Array.from(any_name);
 console.log("any_name:", any_name_1);
+
+
+
