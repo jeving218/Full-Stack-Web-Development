@@ -54,24 +54,69 @@
 
 
 // // // 2nd Example of Promise
-function sayMessage() {
-    const message = new Promise(function (resolve, reject) {
-        setTimeout(function () {
-            resolve("Hello ");
-        },2000);
-        setTimeout(function () {
-            resolve("World");
-        },4000);
+// function sayMessage() {
+//     const message = new Promise(function (resolve, reject) {
+//         setTimeout(function () {
+//             resolve("Hello ");
+//         },2000);
+//         setTimeout(function () {
+//             resolve("World");
+//         },4000);
 
-    })
-    return message;
+//     })
+//     return message;
+// }
+
+// let s =  sayMessage()
+// s
+// .then(function exec(msg){
+//     console.log(msg);
+// })
+// .catch(function exec(err){
+//     console.log(err);
+// })
+
+
+// const newProise = new Promise(function (resolve, reject) {
+//     let err = true;
+//     if (!err) {
+//         resolve("Hello world!");
+//     }
+//     else {
+//         reject("Error: " + err);
+//     }
+// })
+
+// newProise
+//     .then(
+//         function (val) {
+//             console.log(val);
+//         }
+//     )
+//     .catch(function (err) {
+//         console.log(err);
+//     })
+
+
+
+const promiseFunction = new Promise(function (resolve, reject) {
+    setTimeout(function () {
+        let err = false;
+        if (!err) {
+            resolve("Book already in progress");
+        }
+        else {
+            reject("Error: Book not Found");
+        }
+
+    }, 1000)
+});
+
+async function getBook() {
+    console.log("Before await");
+    const response = await promiseFunction
+    console.log("After await");
+    console.log(response);
 }
 
-let s =  sayMessage()
-s
-.then(function exec(msg){
-    console.log(msg);
-})
-.catch(function exec(err){
-    console.log(err);
-})
+getBook();
