@@ -118,5 +118,15 @@ async function getBook() {
     console.log("After await");
     console.log(response);
 }
-
 getBook();
+
+
+function updateBook(){
+    console.log("Book updated");
+}
+updateBook();
+
+function deleteBook(){
+    console.log("Book deleted");
+}
+deleteBook();
