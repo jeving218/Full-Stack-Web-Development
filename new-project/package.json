@@ -1,0 +1,22 @@
+{
+  "name": "new-project",
+  "version": "1.0.1",
+  "description": "new project jason file",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeving218/Full-Stack-Web-Development.git"
+  },
+  "keywords": [
+    "full-stack-web-developer"
+  ],
+  "author": "jeving",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeving218/Full-Stack-Web-Development/issues"
+  },
+  "homepage": "https://github.com/jeving218/Full-Stack-Web-Development#readme"
+}

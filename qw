@@ -1,0 +1,214 @@
+Problem Statement 
+
+A Compact disk(CD) can be represented as a binary string. The CD is divided into N sectors where sector 0 is adjacent to sector N-1. You are given the initial state of the CD in the string initialState. You store/delete some files on the CD resulting in the state denoted by the string finalState.          
+
+The CD writer is given to you in the string wa The 1's in the string denote the sectors above which fixed writing heads are located. You can the following two time intensive operations.
+
+1. Rotate the CD clock-wise or anti-clockwise by 1 step which takes 2 seconds. Note that the writing heads are fixed while the CD rotates. 
+2. Use any fixed writing head to change the bit under it which takes 3 seconds. Note that you can use only 1 head at a time.
+
+you can mingle the above operations as you deem fit i.e. rotate the few steps, some head(s), rotate in other direction, use some head(s) etc
+
+Find the minimum time taken to change the CD contents from initialState to finalState given that the fixed writing heads are located in the string writer. Return -1 if you can't use the writer to achieve the goal. All the strings have equal length
+
+Input Format 
+
+The first line contains a string, initialState, denoting the initial contents.
+The next line contains a string, finalState, denoting the final contents.
+The next line contains a string, writer, denoting the fixed write heads.
+
+contraints
+1 <= len(initialState) <= 50
+1 < len(finalState) <= 50
+1 <= len(writer) <= 50
+
+ Sample Input
+
+10001
+11101
+01010
+Sample Output 8
+
+Explanation
+
+There are 2 writing heads on sectors 1 and 3 respectively(note sectors are 0- indexed). One way to achieve
+Sample Output  
+
+Explanation
+
+There are 2 writing heads on sectors 1 and 3 respectively[note sectors are O indexed). One way to achieve the minimum time is to use both the writing heads one by one. Using writing head above sector 1 changes the string to 11001. This takes & seconds. Using writing head on sector-3 takes 3 seconds more and changes contents to 11011. Rotating it once clockwise, makes initialState equal to finalState. Total time = 2*3+2=8
+
+
+input 
+11010
+01010
+00000
+
+oputput
+-1
+explanation
+
+Since there are no heads and initial state = final state the CD contents can't be changed.
+
+
+input
+101010010101 
+0101001010101 
+1010101010010
+
+output
+4
+explanation
+
+Rotating the CD 2 times in anti- clockwise direction is enough. We don't need to use any
+
+
+def min_time_to_change(initialState, finalState, writer):
+    # Check if initialState is already equal to finalState
+    if initialState == finalState:
+        return 0
+
+    # Check if the writer is empty (no writing heads)
+    if writer.count('1') == 0:
+        return -1
+
+    n = len(initialState)  # Length of the CD
+
+    # Find the indices of the writing heads
+    writing_heads = [i for i, bit in enumerate(writer) if bit == '1']
+
+    min_time = float('inf')  # Initialize the minimum time to infinity
+
+    # Try all possible rotations
+    for rotate in range(n):
+        time = rotate * 2  # Time taken for rotation
+
+        # Apply changes using each writing head
+        for head in writing_heads:
+            # Calculate the new state after applying the head
+            new_state = initialState[:head] + str(1 - int(initialState[head])) + initialState[head + 1:]
+
+            # Check if the new state matches the final state
+            if new_state == finalState:
+                min_time = min(min_time, time + 3)  # Update the minimum time
+
+        initialState = initialState[-1] + initialState[:-1]  # Rotate the CD
+
+    if min_time == float('inf'):
+        return -1  # If no valid sequence of operations found
+    else:
+        return min_time
+
+# Read the input
+initialState = input().strip()
+finalState = input().strip()
+writer = input().strip()
+
+# Call the function to find the minimum time
+result = min_time_to_change(initialState, finalState, writer)
+
+# Print the result
+print(result)
+
+
+
+
+
+
+
+
+
+
+problem write python code for given problem
+
+You are given a circular array A containing N integers. You can perform the following on on this array any number of items: 
+
+• For each replace A[i] by A[i-1], A[i] or A[i+1] i.e. you can keep the current element or replace it by an adjacent element. Note that due to circularity of the array dat elements exist even for the first and the last element. In particular, A[i-1] for i=0 is the last element.
+
+Determine the minimum number of steps needed to make all the elements of the array equal.
+
+Input Format
+
+The first line contains an integer, N, denoting the number of elments in A.
+Each line of the N subsequent lines (where 0si<N) contains an integer describing A[i].
+
+Constraints
+1 <= N<= 10^3
+1<=A[] <= 10^5
+
+input
+4
+2
+2
+1
+1
+
+output
+1
+
+Explanation
+In one step, you can choose A[2] apsiya rA[1] and A[3] for A[0] making all the elements equal to 1Note, that A[0] is adjacent to A[3]
+
+
+input
+3
+1
+1
+1
+output
+0
+Explanation
+Since all elements are equalwe don't need additional step.
+
+input
+4
+1
+2
+3
+4
+output
+2
+Explanation
+In step one, we can make A[3] to be 1 and A[2] to be 1. We need at- least 2 steps to make all elements equal.
+
+input
+7
+1
+7
+2
+4
+4
+5
+6
+output
+3
+explanation
+N = 7 Array = [1,7,2,4,4,5,6]. In step one, we can make A[2] to be 4 and A[5] to be 4Array now is[1, 7, 4, 4, 4, 4.6] In second stepwe can make A[1] to be 4an * dA[6] * t be 4Array now is 1,4,4,4,4,4]In third step, we can make A[0] to be 4Now, all elements are equal Note, that there does not exist a sequence of moves and choices that results in making all elements equal in less than 3 steps.
+
+
+def min_steps_to_equalize_array(A):
+    n = len(A)
+    min_steps = float('inf')
+
+    for target in A:
+        steps = 0
+        for num in A:
+            diff = abs(target - num)
+            if diff > 1:
+                steps += diff - 1
+        min_steps = min(min_steps, steps)
+
+    return min_steps
+
+# Read the input
+N = int(input())
+A = []
+for _ in range(N):
+    num = int(input())
+    A.append(num)
+
+# Calculate the minimum steps
+min_steps = min_steps_to_equalize_array(A)
+
+# Print the result
+print(min_steps)
